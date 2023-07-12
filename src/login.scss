@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Kanit:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+@mixin mobile{
+    @media screen and (max-width: 480px){
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media screen and (max-width: 786px){
+        @content;
+    }
+}
+
+@mixin laptop{
+    @media screen and (max-width: 1200px){
+        @content;
+    }
+}
+
+.login-container{
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+    .login-wrapper{
+        
+        .login-title , .login-title2{
+            color: white;
+            font-family: 'Kalam', cursive;
+        }
+        
+        .login-title2{
+            margin-top: 0.8rem;
+            font-size: 25px;
+        }
+        
+        .reg{
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            
+            .user, .pwd{
+                border: none;
+                border-bottom: 2px solid black;
+                font-size: 1rem;
+                font-family: 'Ubuntu', sans-serif;
+                height: 5vh;
+                padding: 2%;
+            }
+            
+            .user:focus, .pwd:focus{
+                border-bottom: 2px solid black;
+                outline: none;
+            }
+
+            input#showpass {
+                min-width: 20px;
+
+            }
+            
+            label{
+                font-family: 'Ubuntu', sans-serif;
+                margin-left: 10px;
+            }
+
+            .sb-btn{
+                background-color: #EDD138;
+                color: white;
+                padding: 13px;
+                margin-top: 5%;
+                font-family: 'Ubuntu', sans-serif;
+                font-size: 1rem;
+                border-radius: 15px 15px 15px 15px;
+                cursor: pointer;
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+
+        .reg-temp{
+            color: white;
+            font-family: "Kanit", sans-serif;
+            font-size: 1.1rem;
+        }
+
+        margin-left: 15%;
+        background-color: #397FF9;
+        padding: 25px;
+        height: fit-content;
+        width: 22%;
+        text-align: center;
+        border-radius: 5%;
+        @include laptop{
+            width: fit-content;
+            height: fit-content;
+        }
+    }
+}
+
