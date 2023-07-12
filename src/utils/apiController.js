@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = "http://localhost:3000/";
+const baseURL = "https://rococo-manatee-1b0b7d.netlify.app/";
 
 const getAllTodo = (setNotes) => {
     axios
