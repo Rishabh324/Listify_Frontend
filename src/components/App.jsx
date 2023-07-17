@@ -7,6 +7,7 @@ import { getAllTodo, addTodo, deleteTodo, editTodo } from "../utils/apiControlle
 
 const App = () => {
   const [notes, setNotes] = useState([]);
+  alert('There are few demo notes. Feel free to delete them and get Started.');
 
   useEffect(() => {
     getAllTodo(setNotes);
