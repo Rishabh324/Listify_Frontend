@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = "http://13.127.209.219:8000/";
+const baseURL = "https://43.205.125.4:8000/";
 
 const getAllTodo = (setNotes) => {
     axios
