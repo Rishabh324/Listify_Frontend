@@ -4,7 +4,6 @@ import Modal from '@mui/material/Modal';
 import EditIcon from "@mui/icons-material/Edit"
 import Fab from "@mui/material/Fab";
 import Box from '@mui/material/Box';
-import { useDrag, useDrop } from 'react-dnd'
 
 function Note({ key, id, title, state, content, onDelete, onEdit }) {
   const style = {
@@ -28,25 +27,25 @@ function Note({ key, id, title, state, content, onDelete, onEdit }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: "note",
-    drop: (item) => addItemToSection(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver()
-    })
-  }))
+  // const [{ isOver }, drop] = useDrop(() => ({
+  //   accept: "note",
+  //   drop: (item) => addItemToSection(item.id),
+  //   collect: (monitor) => ({
+  //     isOver: !!monitor.isOver()
+  //   })
+  // }))
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: "note",
-    item: id,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-    })
-  }))
+  // const [{ isDragging }, drag] = useDrag(() => ({
+  //   type: "note",
+  //   item: id,
+  //   collect: (monitor) => ({
+  //     isDragging: !!monitor.isDragging()
+  //   })
+  // }))
 
-  const addItemToSection = (id) => {
-    console.log("dropped", id);
-  }
+  // const addItemToSection = (id) => {
+  //   console.log("dropped", id);
+  // }
   function handleDelete() {
     onDelete(id);
   }
@@ -57,7 +56,7 @@ function Note({ key, id, title, state, content, onDelete, onEdit }) {
   }
 
   return (
-    <div ref={drag} className="note" key={key} >
+    <div className="note" key={key} >
       <div className="content">
         <h1><b>Title:</b> {title}</h1>
         <p><b>State:</b> {state}</p>
@@ -83,11 +82,11 @@ function Note({ key, id, title, state, content, onDelete, onEdit }) {
               <br />
               <label htmlFor="title"><b>Select State to Update:</b></label>
               <br />
-              <input name="title" type="radio" value="Todo" style={{ marginRight: "5px", marginTop: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat === "Todo" ? true : false}></input>
+              <input name="title" type="radio" value="Todo" style={{ marginRight: "5px", marginTop: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat==="Todo"? true : false}></input>
               <label style={{ marginRight: "15px" }} htmlFor="title">Todo</label>
-              <input name="title" type="radio" value="Doing" style={{ marginRight: "5px", marginTop: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat === "Doing" ? true : false}></input>
+              <input name="title" type="radio" value="Doing" style={{ marginRight: "5px", marginTop: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat==="Doing"? true : false}></input>
               <label style={{ marginRight: "15px" }} htmlFor="title">Doing</label>
-              <input name="title" type="radio" value="Done" style={{ marginTop: "5px", marginRight: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat === "Done" ? true : false}></input>
+              <input name="title" type="radio" value="Done" style={{ marginTop: "5px", marginRight: "5px", padding: "10px", fontFamily: "Montserrat, sans-serif" }} onChange={(e) => setStat(e.target.value)} defaultChecked={stat==="Done"? true : false}></input>
               <label htmlFor="title">Done</label>
               <br />
               <br />
