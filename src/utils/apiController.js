@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseURL = "https://43.205.125.4:8000/";
+const baseURL = "http://localhost:8000/";
 
 const getAllTodo = (setNotes) => {
     axios
-        .get(baseURL)
+        .get(`${baseURL}`)
         .then(({ data }) => {
             console.log(data.data.Todos);
             setNotes(data.data.Todos);
@@ -12,11 +12,12 @@ const getAllTodo = (setNotes) => {
         .catch(err => console.log(err));
 }
 
-const addTodo = (title, content, setNotes) => {
+const addTodo = (title, content, state, setNotes) => {
     axios
         .post(`${baseURL}save`, {
             title: title,
-            content: content
+            content: content,
+            state: state
         })
         .then(() => {
             getAllTodo(setNotes);
@@ -24,11 +25,12 @@ const addTodo = (title, content, setNotes) => {
         .catch(err => console.log(err));
 }
 
-const editTodo = (id, title, content, setNotes) => {
+const editTodo = (id, ttl, cntt, stet, setNotes) => {
     axios
         .patch(`${baseURL}save/${id}`, {
-            title: title,
-            content: content
+            title: ttl,
+            content: cntt,
+            state: stet
         })
         .then(() => {
             getAllTodo(setNotes);

@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components/App'
 import './styles.css'
-
-alert('There are few demo notes. Feel free to delete them and get Started.');
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <DndProvider backend={HTML5Backend}>
+      <App />
+    </DndProvider>
   </React.StrictMode>,
 )

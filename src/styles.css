@@ -15,6 +15,12 @@ body {
   padding: 0 16px;
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 header {
   background-color: #f5ba13;
   margin: auto -16px;
@@ -32,19 +38,37 @@ header h1 {
 footer {
   position: absolute;
   text-align: center;
-  bottom: 0;
+  margin-bottom: 0;
   width: 98%;
   height: 2.5rem;
 }
 
 footer p {
-  color: #ccc;
+  color: #F5BA13;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .note-grid{
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
+
+.note-grid h1{
+  text-align: center;
+}
+
+.note-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.list-grid{
+  width: fit-content;
+}
+
 .note {
   background: #fff;
   border-radius: 7px;
@@ -90,7 +114,7 @@ footer p {
 
 form.create-note {
   position: relative;
-  width: 480px;
+  width: 530px;
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;

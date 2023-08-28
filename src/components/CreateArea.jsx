@@ -5,10 +5,11 @@ import Zoom from "@mui/material/Zoom";
 
 function CreateArea(props) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   const [note, setNote] = useState({
     title: "",
-    content: ""
+    content: "",
+    state: ""
   });
 
   function handleChange(event) {
@@ -31,7 +32,8 @@ function CreateArea(props) {
     event.preventDefault();
     setNote({
       title: "",
-      content: ""
+      content: "",
+      state: ""
     });
   }
 
@@ -39,12 +41,48 @@ function CreateArea(props) {
     <div>
       <form className="create-note">
         {(isExpanded) && (
-          <input
-            name="title"
-            onChange={handleChange}
-            value={note.title}
-            placeholder="Title"
-          />
+          <>
+            <input
+              name="title"
+              onChange={handleChange}
+              value={note.title}
+              style={{ marginBottom: "5px" }}
+              placeholder="Title"
+            />
+            <hr
+              style={{ marginBottom: "10px" }}
+            />
+            <div style={{ display: "flex" }}>
+              <p style={{ width: "fit-content" }}>State: </p>
+              <input
+                type="radio"
+                name="state"
+                onChange={handleChange}
+                style={{ width: "7%" }}
+                value="Todo"
+              // placeholder="Todo, Doing or Done... Type either one of the three."
+              /><label htmlFor="state">Todo</label>
+              <input
+                name="state"
+                type="radio"
+                onChange={handleChange}
+                style={{ width: "7%" }}
+                value="Doing"
+              // placeholder="Todo, Doing or Done... Type either one of the three."
+              /><label htmlFor="state">Doing</label>
+              <input
+                type="radio"
+                name="state"
+                onChange={handleChange}
+                value="Done"
+                style={{ width: "7%" }}
+              // placeholder="Todo, Doing or Done... Type either one of the three."
+              /><label htmlFor="state">Done</label>
+            </div>
+            <hr
+              style={{ marginTop: "10px" }}
+            />
+          </>
         )}
         <textarea
           name="content"
@@ -53,6 +91,7 @@ function CreateArea(props) {
           value={note.content}
           placeholder="Take a note..."
           rows={isExpanded ? 3 : 1}
+          style={{ marginTop: "5px" }}
         />
         <Zoom in={isExpanded}>
           <Fab onClick={submitNote}>
